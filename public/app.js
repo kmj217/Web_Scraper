@@ -16,3 +16,19 @@ $(document).on('click', '#scrape', () => {
 
     })
 });
+
+// click event to unsave an article
+$(document).on('click', '.saved', function() {
+    $(this).removeClass("saved");
+    var data = $(this).data("id");
+    console.log($(this).data("id"));
+    $.ajax({
+        method: 'PUT',
+        url: '/api/saved',
+        data: {id: data,
+                saved: false}
+    }).then(function () {
+        document.location.href = '/';
+
+    })
+});
