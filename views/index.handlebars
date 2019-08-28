@@ -1,0 +1,24 @@
+
+    <h1>desiringGod Cristian Articles</h3>
+        <div>
+            <button id="scrape">NEW ARTICLES</button><button id="saved">SAVED ARTICLES</button>
+        </div>
+        <hr>
+        <div class="card-list">
+            {{#each articles}}
+            <button class="card">
+                <a href={{link}} target="_blank">{{title}}</a> 
+  
+                {{#if saved}}
+                
+                <a data-id={{_id}} class="saved">Unsave</a>
+                
+                {{else}}
+                <a data-id={{_id}} class="notSaved">Save</a>
+
+                {{/if}}
+
+            </button>
+          {{/each}}
+
+        </div>

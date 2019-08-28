@@ -1,0 +1,15 @@
+
+<body class="container">
+    <h1>desiringGod Cristian Saved Articles</h3>
+        <div>
+            <button id="backButton">HOME</button>
+        </div>
+        <hr>
+        <div class="card-list">
+            {{#each savedArticles}}
+            <button class="card center">
+                <a href={{link}} target="_blank">{{title}}</a>
+            </button>
+          {{/each}}
+
+        </div>
