@@ -32,3 +32,19 @@ $(document).on('click', '.saved', function() {
 
     })
 });
+
+// click event to save an article
+$(document).on('click', '.notSaved', function() {
+    $(this).addClass("saved");
+    var data = $(this).data("id");
+    console.log($(this).data("id"));
+    $.ajax({
+        method: 'PUT',
+        url: '/api/saved',
+        data: {id: data,
+                saved: true}
+    }).then(function () {
+        document.location.href = '/';
+
+    })
+});
