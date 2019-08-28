@@ -14,4 +14,19 @@ module.exports = function (app) {
       });
     })
   });
+
+  app.get('/saved', function (req, res) {
+    db.Article.find({
+      saved: true
+    }, (error, savedArticle) => {
+      if (error) {
+        console.log(error);
+      }
+      console.log(savedArticle)
+      // res.send(savedArticle)
+      res.render('saved', {
+        savedArticles: savedArticle
+      });
+    })
+  });
 }

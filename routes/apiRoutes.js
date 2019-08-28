@@ -39,4 +39,55 @@ module.exports = function (app) {
         // Make sure it worked
         res.send("articles have been scraped");
       });
-  });}
+  });
+
+  // Route to retrieve data from mongo and display it
+  app.get("/api/all", function (req, res) {
+    console.log("running to retrieve all the articles");
+    // Query the mongodb for my scraped data and return it as json object
+    db.Article.find({}, function (error, articles) {
+      // Log any errors 
+      if (error) {
+        console.log(error);
+      }
+      // Send the result to the browser
+      else {
+        res.json(articles);
+      }
+    });
+  });
+
+  // Route to retrieve data from mongo and display it
+  app.get("/api/saved", function (req, res) {
+    console.log("running to retrieve all the saved articles");
+    // Query the mongodb for my scraped data and return it as json object
+    db.Article.find({saved: true}, function (error, savedArticles) {
+      // Log any errors 
+      if (error) {
+        console.log(error);
+      }
+      // Send the result to the browser
+      else {
+        res.json(savedArticles);
+      }
+    });
+  });
+
+  app.put("/api/saved", function (req, res) {
+    console.log("running to retrieve all the saved articles");
+    console.log(req.body.id);
+    // Query the mongodb for my scraped data and return it as json object
+    db.Article.findOneAndUpdate({_id: req.body.id}, {saved: req.body.saved}, function (error, savedArticles) {
+      // Log any errors 
+      if (error) {
+        console.log(error);
+      }
+      // Send the result to the browser
+      else {
+        console.log(savedArticles);
+        res.json(savedArticles);
+      }
+    });
+  });
+
+};
