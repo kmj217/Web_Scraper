@@ -48,3 +48,13 @@ $(document).on('click', '.notSaved', function() {
 
     })
 });
+
+// click event to go to the saved articles page
+$(document).on('click', '#saved', () => {
+    document.location.href = '/saved';
+});
+
+// click event to go back to the home page
+$(document).on('click', '#backButton', () => {
+    document.location.href = '/';
+});
